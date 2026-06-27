@@ -1,219 +1,112 @@
 
 
-[![DOI](https://zenodo.org/badge/161216111.svg)](https://zenodo.org/doi/10.5281/zenodo.10869789)
-[![tests](https://github.com/LucasAlegre/sumo-rl/actions/workflows/linux-test.yml/badge.svg)](https://github.com/LucasAlegre/sumo-rl/actions/workflows/linux-test.yml)
-[![PyPI version](https://badge.fury.io/py/sumo-rl.svg)](https://badge.fury.io/py/sumo-rl)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/LucasAlegre/sumo-rl/blob/main/LICENSE)
+# SUMO Work Zone Traffic Control with Deep Q-Network (DQN)
 
-# SUMO-RL: Work Zone Traffic Signal Control with DQN
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-<!-- start intro -->
+A reinforcement learning framework for traffic signal control in SUMO work zone environments using Deep Q-Networks (DQN).
 
-SUMO-RL provides a simple interface to instantiate Reinforcement Learning (RL) environments with [SUMO](https://github.com/eclipse/sumo) for Traffic Signal Control.
-This project extends the original SUMO-RL framework with a **multi-model comparison pipeline** that evaluates trained DQN agents against SUMO's default fixed-timing controller in a **work zone / construction scenario**. It measures five key metrics — waiting time, queue length, average speed, throughput, and TTC (Time-To-Collision) safety conflicts — and generates Pareto front visualizations to support multi-objective model selection.
+## Overview
 
-<img src="expected plots/flowchart.png" align="center" width="80%"/>
+This project implements a DQN agent that learns to optimize traffic flow, reduce delays, and improve safety near work zones. The agent observes traffic conditions and decides when to change traffic signal phases to minimize vehicle delays and prevent congestion spillback.
 
-Goals of this repository:
-- Provide a simple interface to work with Reinforcement Learning for Traffic Signal Control using SUMO
-- Support Multiagent RL
-- Compatibility with `gymnasium.Env` and popular RL libraries such as [stable-baselines3](https://github.com/DLR-RM/stable-baselines3) and [RLlib](https://docs.ray.io/en/main/rllib.html)
-- Easy customisation: state and reward definitions are easily modifiable
-- **Evaluate and compare multiple DQN Pareto-optimal agents against the SUMO default controller**
-- **Multi-objective analysis: efficiency (waiting, queue, speed, throughput) vs. safety (TTC conflicts)**
-
-<img src="expected plots/workzone.png" align="center" width="70%"/>
-
-<!-- end intro -->
-
----
-
-## Install
-
-<!-- start install -->
-
-### Install SUMO latest version:
+## Quick Start
 
 ```bash
-sudo add-apt-repository ppa:sumo/stable
-sudo apt-get update
-sudo apt-get install sumo sumo-tools sumo-doc
+# Install dependencies
+pip install -r requirements.txt
+
+# Train the agent
+python training/train_dqn.py --episodes 100
+
+# Evaluate the trained agent
+python evaluation/evaluate_policy.py --model outputs/models/dqn_final.pt
 ```
 
-Don't forget to set the `SUMO_HOME` variable (default sumo installation path is `/usr/share/sumo`):
-```bash
-echo 'export SUMO_HOME="/usr/share/sumo"' >> ~/.bashrc
-source ~/.bashrc
+## Project Structure
+
+```
+sumo-workzone-rl/
+├── configs/               # Configuration files
+│   ├── default_config.yaml    # DQN hyperparameters
+│   └── sumo_config.yaml       # SUMO simulation settings
+├── data/
+│   └── networks/workzone/     # SUMO network files
+├── envs/                  # Environment module
+│   ├── sumo_env.py        # SUMO environment wrapper
+│   ├── reward_functions.py
+│   └── observations.py
+├── agents/                # RL agents
+│   └── dqn_agent.py       # DQN implementation
+├── training/              # Training utilities
+│   ├── train_dqn.py       # Training script
+│   └── replay_buffer.py
+├── evaluation/            # Evaluation utilities
+│   ├── evaluate_policy.py
+│   └── metrics.py
+├── outputs/               # Training outputs
+├── docs/                  # Documentation
+├── tests/                 # Unit tests
+└── requirements.txt
 ```
 
-> **Performance tip:** For a ~8x speed boost with Libsumo, declare:
-> ```bash
-> export LIBSUMO_AS_TRACI=1
-> ```
-> Note: this disables `sumo-gui` and parallel simulations ([more details](https://sumo.dlr.de/docs/Libsumo.html)).
+## Key Features
 
-Clone this Repository:
-```bash
-git clone https://github.com/IsraelAfriyie-dev/SUMO-REINFORCEMENT-LEARNING-FOR-WORKZONE-TRAFFIC-CONDITION
-cd SUMO-REINFORCEMENT-LEARNING-FOR-WORKZONE-TRAFFIC-CONDITION
-pip install -e .
-```
+- **Gymnasium-compatible environment** for easy integration
+- **DQN with experience replay** and target networks
+- **Multi-objective reward function** penalizing queues, waiting time, and TTC conflicts
+- **Work zone-specific metrics** for spillback and merge conflicts
+- **Configurable via YAML** - no code changes needed for hyperparameters
+- **Comprehensive evaluation** with fixed-timing and random baselines
 
-### Install additional dependencies for the comparison pipeline:
+## Documentation
 
-```bash
-pip install stable-baselines3 matplotlib numpy
-```
+For detailed documentation, see [docs/README.md](docs/README.md).
 
-<!-- end install -->
+## State Space
 
----
+| Feature | Description | Dimensions |
+|---------|-------------|------------|
+| Phase One-Hot | Current signal phase | 2 |
+| Min Green | Minimum green elapsed | 1 |
+| Queue Length | Normalized queue per lane | num_lanes |
+| Average Speed | Normalized speed per lane | num_lanes |
+| Waiting Time | Normalized waiting per lane | num_lanes |
+| Vehicle Count | Normalized count per lane | num_lanes |
 
-## Observations, Action and Rewards
+## Action Space
 
-### Observation
+- **0**: Keep current phase
+- **1**: Switch to next phase
 
-<!-- start observation -->
+## Reward Function
 
-The default observation for each traffic signal agent is a vector:
-```python
-obs = [phase_one_hot, min_green, lane_1_density, ..., lane_n_density, lane_1_queue, ..., lane_n_queue]
-```
-- `phase_one_hot` — one-hot encoded vector of the current active green phase
-- `min_green` — binary flag indicating whether the minimum green time has elapsed
-- `lane_i_density` — number of vehicles in incoming lane `i` divided by lane capacity
-- `lane_i_queue` — number of queued vehicles (speed < 0.1 m/s) in lane `i` divided by lane capacity
+**Penalizes:**
+- Long queues
+- Excessive waiting time
+- Stop-and-go behavior
+- TTC (Time-To-Collision) conflicts
+- Work zone spillback
 
-You can define your own observation by implementing a class that inherits from [ObservationFunction](https://github.com/LucasAlegre/sumo-rl/blob/main/sumo_rl/environment/observations.py) and passing it to the environment constructor.
+**Encourages:**
+- Higher average speeds
+- Better throughput
 
-<!-- end observation -->
+## Requirements
 
+- Python 3.8+
+- SUMO 1.18+
+- PyTorch 2.0+
+- See `requirements.txt` for full list
 
-### Action
+## Installation
 
-<!-- start Action -->
+See [docs/README.md](docs/README.md#installation) for detailed installation instructions.
 
-The agent selects from a discrete set of traffic signal phases at the intersection:
-```python
-A = {0, 1, 2, ..., Np-1}
-```
-where Np is the total number of feasible signal phases.
-<!-- end action -->
+## License
 
-
-
-### Rewards
-
-<!-- start reward -->
-
-The reward signal combines multiple competing objectives relevant to work-zone traffic control through weighted scalarization:
-
-<p align="center">
-<img src="reward.png" align="center" width="60%"/>
-</p>
-
-That is, the reward reflects metrics for accumulated waiting time, queued vehicle count, average speed, traffic pressure, safety conflicts (time-to-collision), and work-zone queue spillback, respectively.
-
-You can choose a different reward function (see the ones implemented in [TrafficSignal](https://github.com/LucasAlegre/sumo-rl/blob/main/sumo_rl/environment/traffic_signal.py)) via the `reward_fn` parameter, or define your own:
-
-```python
-def my_reward_fn(traffic_signal):
-    return traffic_signal.get_average_speed()
-
-env = SumoEnvironment(..., reward_fn=my_reward_fn)
-```
-
-<!-- end reward -->
-
----
-
-## Multi-Model Comparison: DQN Pareto Agents vs SUMO Default
-
-The script [`compare_models.py`](experiments/compare_models.py) evaluates a set of pre-trained DQN models against SUMO's default fixed-timing controller for some measured metrics across multiple episodes and seeds.
-
-### Measured Metrics
-
-| Metric | Description |
-|---|---|
-| **Waiting Time (s)** | Average cumulative waiting time across all controlled lanes |
-| **Queue Length** | Average number of halted vehicles per lane (speed < 0.1 m/s) |
-| **Average Speed (m/s)** | Mean vehicle speed across all controlled lanes |
-| **Throughput** | Number of vehicles that successfully completed their trip |
-| **TTC Conflicts** | Number of vehicles with a Time-To-Collision below 1.5 seconds (safety proxy) |
-
-<p align="center">
-<img src="expected plots/dqn_work_zone_results.png" align="center" width="50%"/>
-</p>
-
-
-### Hyerparamters
-```python
-DQN Training Hyperparameters
-LEARNING_RATE           = 0.001        # Neural network learning rate
-DISCOUNT_FACTOR         = 0.99         # Reward discount factor (gamma)
-REPLAY_BUFFER_SIZE      = 100000       # Experience replay memory capacity
-MINI_BATCH_SIZE         = 64           # Training batch size
-TARGET_UPDATE_FREQ      = 1000         # Target network update interval (steps)
-
-Exploration Strategy (Epsilon-Greedy)
-INITIAL_EPSILON         = 1.0          # Starting exploration rate
-MIN_EPSILON             = 0.01         # Minimum exploration rate
-EPSILON_DECAY_RATE      = 0.995        # Exploration decay multiplier
-
-Training Configuration
-NUM_EPISODES            = 500          # Total training episodes
-MAX_STEPS_PER_EPISODE   = 1000         # Maximum steps per episode
-HIDDEN_LAYER_SIZE       = 128          # Neural network hidden layer neurons
-
-Network Architecture
-OPTIMIZER               = "Adam"       # Optimization algorithm
-ACTIVATION_FUNCTION     = "ReLU"       # Hidden layer activation
-```
-
-### Plotting Results
-<p align="center">
-<img src="expected plots/reward plots.png" align="center" width="60%"/>
-</p>
-
----
-
-## API's (Gymnasium and PettingZoo)
-
-### Gymnasium Single-Agent API
-
-<!-- start gymnasium -->
-
-If your network has only **one traffic light**, instantiate a standard Gymnasium env:
-```python
-import gymnasium as gym
-import sumo_rl
-
-env = gym.make('sumo-rl-v0',
-               net_file='path_to_your_network.net.xml',
-               route_file='path_to_your_routefile.rou.xml',
-               out_csv_name='path_to_output.csv',
-               use_gui=True,
-               num_seconds=100000)
-
-obs, info = env.reset()
-done = False
-while not done:
-    next_obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
-    done = terminated or truncated
-```
-
-<!-- end gymnasium -->
-
-### Pareto Multi-Objective Optimization:
-The reinforcement learning framework trains multiple policies using different reward weight combinations to explore trade-offs between competing objectives: waiting time, queue length, and safety (TTC conflicts).
-
-<p align="center">
-<img src="expected plots/3D pareto.png" align="center" width="60%"/>
-</p>
-
----
+MIT License
 
 
 
