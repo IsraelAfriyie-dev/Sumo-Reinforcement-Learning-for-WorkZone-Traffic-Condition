@@ -86,7 +86,7 @@ For detailed documentation, see [docs/README.md](docs/README.md).
 - Long queues
 - Excessive waiting time
 - Stop-and-go behavior
-- TTC (Time-To-Collision) conflicts
+- MTI conflicts
 - Work zone spillback
 
 **Encourages:**
