@@ -1,0 +1,100 @@
+# SUMO Configuration for Work Zone Traffic Control
+# This file contains paths and settings specific to SUMO simulation
+
+# =============================================================================
+# SUMO Installation
+# =============================================================================
+sumo:
+  sumo_home: "/usr/share/sumo"   # SUMO installation directory
+  use_gui: false                 # Use SUMO GUI (sumo-gui)
+  use_libsumo: true              # Use Libsumo for faster simulation
+  libsumo_as_traci: true         # Set LIBSUMO_AS_TRACI=1 for speed
+
+# =============================================================================
+# Network Files
+# =============================================================================
+network:
+  net_file: "data/networks/workzone/net.net.xml"
+  route_file: "data/networks/workzone/rou.route.xml"
+  additional_files:
+    - "data/networks/workzone/laneClosure.add.xml"
+    - "data/networks/workzone/network_IA.add.xml"
+    - "data/networks/workzone/tls.rl.add.xml"
+  config_file: "data/networks/workzone/network_IA.sumocfg"
+  vehicle_types: "data/networks/workzone/vTypeDistributions.add.xml"
+
+# =============================================================================
+# Traffic Signal Configuration
+# =============================================================================
+traffic_signal:
+  tls_id: "TL1"                  # Traffic light system ID to control
+  program_id: "0"                # Traffic light program ID
+  phases:
+    - id: 0                      # Phase 0: East-West green
+      duration: 30
+      state: "GGGgrrrr"
+    - id: 1                      # Phase 1: East-West yellow
+      duration: 3
+      state: "yyygrrrr"
+    - id: 2                      # Phase 2: East-West red
+      duration: 5
+      state: "rrgrrrrr"
+    - id: 3                      # Phase 3: North-South green
+      duration: 30
+      state: "rrrrGGGg"
+    - id: 4                      # Phase 4: North-South yellow
+      duration: 3
+      state: "rrrryyyy"
+    - id: 5                      # Phase 5: North-South red
+      duration: 5
+      state: "rrrrrrrr"
+
+# =============================================================================
+# Work Zone Configuration
+# =============================================================================
+workzone:
+  enabled: true                  # Enable work zone features
+  rerouter_edges:               # Edges with lane closures
+    - "E#9"
+    - "R2"
+  lane_closure_positions:       # Lane closure detector positions
+    - lane: "E#9_0"
+      position: 1319.77
+    - lane: "E#9_1"
+      position: 1319.77
+  spillback_threshold: 0.8      # Queue threshold for spillback warning
+
+# =============================================================================
+# Vehicle Types
+# =============================================================================
+vehicles:
+  default_type: "car"           # Default vehicle type
+  types:
+    - id: "car"
+      length: 4.0
+      max_speed: 55.55          # ~200 km/h
+      accel: 3.0
+      decel: 3.0
+    - id: "truck"
+      length: 8.0
+      max_speed: 44.44          # ~160 km/h
+      accel: 2.0
+      decel: 2.5
+
+# =============================================================================
+# Safety Metrics
+# =============================================================================
+safety:
+  ssm_enabled: true             # Enable Surrogate Safety Measure
+  ttc_threshold: 1.5            # TTC threshold for conflict (seconds)
+  drac_threshold: 5.0           # DRAC threshold for conflict
+  ssm_output_file: "NUL"        # SSM output file (NUL = discard)
+
+# =============================================================================
+# Additional SUMO Options
+# =============================================================================
+sumo_options:
+  collision_action: "remove"    # Action on collision
+  step_length: 0.2              # Simulation step length
+  no_step_log: true             # Suppress step logging
+  waiting_time_memory: 1000     # Waiting time tracking window

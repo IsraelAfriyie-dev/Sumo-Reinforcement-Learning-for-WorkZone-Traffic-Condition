@@ -1,0 +1,83 @@
+# SUMO Work Zone Traffic Control - DQN Configuration
+# This file contains all hyperparameters for the DQN training
+
+# =============================================================================
+# DQN Agent Hyperparameters
+# =============================================================================
+dqn:
+  learning_rate: 0.001           # Neural network learning rate
+  discount_factor: 0.99          # Reward discount factor (gamma)
+  batch_size: 64                 # Training batch size
+  target_update_frequency: 1000  # Steps between target network updates
+  replay_buffer_size: 100000     # Experience replay memory capacity
+  exploration_fraction: 0.1      # Fraction of training for exploration decay
+  exploration_initial_eps: 1.0   # Initial exploration rate
+  exploration_final_eps: 0.01    # Final exploration rate
+  gradient_steps: 1              # Gradient steps per learning update
+  learning_starts: 500           # Steps before learning starts
+
+# =============================================================================
+# Neural Network Architecture
+# =============================================================================
+network:
+  hidden_layers: [128, 128]      # Hidden layer sizes
+  activation: "relu"             # Activation function
+  optimizer: "adam"              # Optimization algorithm
+
+# =============================================================================
+# Training Configuration
+# =============================================================================
+training:
+  num_episodes: 500              # Total training episodes
+  max_steps_per_episode: 1000    # Maximum steps per episode
+  save_frequency: 50             # Save model every N episodes
+  log_frequency: 10              # Log metrics every N episodes
+  eval_frequency: 50             # Run evaluation every N episodes
+  eval_episodes: 5               # Evaluation episodes per run
+  early_stopping_patience: 100   # Episodes without improvement before stopping
+  min_reward_improvement: 0.01   # Minimum reward improvement threshold
+
+# =============================================================================
+# Simulation Configuration
+# =============================================================================
+simulation:
+  delta_time: 5                  # Seconds between decisions
+  simulation_seconds: 1000       # Total simulation duration per episode
+  min_green_time: 5              # Minimum green phase duration
+  max_depart_delay: -1           # Max delay before vehicle despawn (-1 = infinite)
+  time_to_teleport: -1           # Time before teleporting stuck vehicles
+  sumo_seed: "random"            # Simulation random seed ("random" or integer)
+
+# =============================================================================
+# Reward Function Weights
+# =============================================================================
+reward:
+  waiting_time_weight: -0.1      # Weight for waiting time penalty
+  queue_length_weight: -0.2      # Weight for queue length penalty
+  speed_weight: 0.1              # Weight for average speed reward
+  throughput_weight: 0.01        # Weight for throughput reward
+  safety_weight: -0.3            # Weight for TTC safety penalty
+  spillback_weight: -0.2         # Weight for work-zone spillback penalty
+  stop_go_weight: -0.1           # Weight for stop-and-go penalty
+
+# =============================================================================
+# State Space Features
+# =============================================================================
+state:
+  include_phase: true            # Include one-hot encoded phase
+  include_min_green: true        # Include minimum green elapsed flag
+  include_queue: true            # Include queue lengths
+  include_speed: true            # Include average speeds
+  include_waiting_time: true     # Include waiting times
+  include_vehicle_count: true    # Include vehicle counts
+  normalize: true                # Normalize state values
+
+# =============================================================================
+# Output Configuration
+# =============================================================================
+output:
+  log_dir: "outputs/logs"        # Training log directory
+  plot_dir: "outputs/plots"      # Plot output directory
+  model_dir: "outputs/models"    # Model checkpoint directory
+  tensorboard: true              # Enable TensorBoard logging
+  save_replays: true             # Save replay visualizations

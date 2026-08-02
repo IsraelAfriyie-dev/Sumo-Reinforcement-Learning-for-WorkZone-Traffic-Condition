@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-03-09T20:22:20.399539-05:00 by Eclipse SUMO GUI 1.25.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="C:\Users\Asus ROG\Desktop\sumo-IA\sumo_rl\nets\construction\sumo-xml\net.net.xml"/>
+        <route-files value="C:\Users\Asus ROG\Desktop\sumo-IA\sumo_rl\nets\construction\sumo-xml\rou.route.xml"/>
+    </input>
+
+    <time>
+        <step-length value="0.2"/>
+    </time>
+
+    <processing>
+        <lateral-resolution value="0.8"/>
+        <collision.action value="remove"/>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="-1"/>
+    </processing>
+
+    <report>
+        <no-step-log value="true"/>
+    </report>
+
+    <ssm_device>
+        <device.ssm.probability value="1.0"/>
+        <device.ssm.measures value="TTC"/>
+    </ssm_device>
+
+    <traci_server>
+        <remote-port value="54227"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="11"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<SSMLog>
+    <conflict begin="52.20" end="97.40" ego="ghost" foe="car_flow_E#10.2">
+        <minTTC time="54.60" position="1224.09,868.05" type="3" value="2.47" speed="0.00"/>
+    </conflict>
+    <conflict begin="115.20" end="215.20" ego="ghost" foe="car_flow_E#10.4">
+        <minTTC time="120.00" position="1224.09,868.05" type="3" value="2.02" speed="0.00"/>
+    </conflict>
+    <conflict begin="119.40" end="217.40" ego="ghost" foe="car_flow_E#10.6">
+        <minTTC time="132.00" position="1224.09,868.05" type="3" value="2.07" speed="0.00"/>
+    </conflict>
+    <conflict begin="123.20" end="216.00" ego="ghost" foe="car_flow_E#10.11">
+        <minTTC time="135.80" position="1224.09,868.05" type="3" value="2.01" speed="0.00"/>
+    </conflict>
+    <conflict begin="202.00" end="233.00" ego="ghost" foe="car_flow_E#10.16">
+        <minTTC time="206.80" position="1224.09,868.05" type="3" value="2.03" speed="0.00"/>
+    </conflict>
+    <conflict begin="207.20" end="245.80" ego="ghost" foe="car_flow_E#10.18">
+        <minTTC time="215.60" position="1224.09,868.05" type="3" value="2.02" speed="0.00"/>
+    </conflict>
+    <conflict begin="231.00" end="245.80" ego="ghost" foe="car_flow_E#10.24">
+        <minTTC time="235.60" position="1224.09,868.05" type="3" value="2.00" speed="0.00"/>
+    </conflict>
+</SSMLog>

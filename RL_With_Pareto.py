@@ -27,12 +27,11 @@ from sumo_rl import SumoEnvironment
 # CONFIGURATION
 # ============================================================
 
-_CONFIG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "config")
-NET_FILE = os.path.join(_CONFIG_DIR, "net.net.xml")
-ROUTE_FILE = os.path.join(_CONFIG_DIR, "rou.route.xml")
+NET_FILE = r"C:\Users\Asus ROG\Desktop\sumo-IA\sumo_rl\nets\construction\sumo-xml\net.net.xml"
+ROUTE_FILE = r"C:\Users\Asus ROG\Desktop\sumo-IA\sumo_rl\nets\construction\sumo-xml\rou.route.xml"
 
 USE_GUI = False
-SIMULATION_SECONDS = 9000
+SIMULATION_SECONDS = 200  # Reduced for faster testing
 DELTA_TIME = 5
 
 EPISODE_SEEDS = [11, 22, 33]  # Reduced to 3 episodes

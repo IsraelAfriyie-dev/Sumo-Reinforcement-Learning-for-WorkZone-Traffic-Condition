@@ -1,0 +1,36 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+<!--  VTypes  -->
+<vType id="car" length="4.00" maxSpeed="55.55" accel="3.0" decel="3.0"/>
+
+<!--  Routes  -->
+<route id="NORTH_to_E#11" edges="E#13 E#19 E#11"/>
+<route id="South_E#1" edges="E#7 E#8 E#1"/>
+<route id="South_RIGHT_E#8" edges="E#7 R2 E#11"/>
+<route id="South_to_E#15" edges="E#12 E#14 E#15"/>
+<route id="WEST_to_E#1" edges="E#17 E#10 E#1"/>
+<route id="WEST_to_E#11" edges="E#17 E#19 E#11"/>
+<route id="WEST_to_E#15" edges="E#16 E#15"/>
+<route id="east_through" edges="E#2 E#3 E#4 E#9 E#18"/>
+<route id="east_to_E#6" edges="E#2 E#3 R1 E#6"/>
+<route id="north_to_E#1" edges="E#13 E#10 E#1"/>
+<route id="north_to_E#18" edges="E#13 E#18"/>
+<route id="south_through_E#15" edges="E#12 E#14 E#15"/>
+<route id="south_to_E#1" edges="E#12 E#10 E#1"/>
+<route id="south_to_E#18" edges="E#12 E#18"/>
+
+<!--  Vehicles with CONTINUOUS probability instead of fixed number  -->
+<flow id="car_flow_E#10" type="car" begin="0" end="900" probability="0.15" route="east_through"/>
+<flow id="car_flow_South_Right" type="car" begin="0" end="900" probability="0.15" route="South_RIGHT_E#8"/>
+<flow id="car_flow_WEST_E#6" type="car" begin="0" end="900" probability="0.15" route="WEST_to_E#15"/>
+<flow id="car_flow_north_E#1" type="car" begin="0" end="900" probability="0.15" route="South_E#1"/>
+<flow id="car_flow_north_E#18" type="car" begin="0" end="900" probability="0.15" route="NORTH_to_E#11"/>
+<flow id="car_flow_south_E#15" type="car" begin="0" end="900" probability="0.15" route="north_to_E#1"/>
+<flow id="car_flow_south_E#18" type="car" begin="0" end="900" probability="0.15" route="north_to_E#18"/>
+<flow id="car_flow_south_left" type="car" begin="0" end="900" probability="0.15" route="east_to_E#6"/>
+<flow id="car_flow_through" type="car" begin="0" end="900" probability="0.15" route="south_through_E#15"/>
+<flow id="car_flow_turn" type="car" begin="0" end="900" probability="0.15" route="south_to_E#18"/>
+<flow id="car_flow_turn_E#10" type="car" begin="0" end="900" probability="0.15" route="WEST_to_E#1"/>
+<flow id="car_flow_turn_E#13" type="car" begin="0" end="900" probability="0.15" route="WEST_to_E#15"/>
+<flow id="car_flow_turn_E#15" type="car" begin="0" end="900" probability="0.15" route="South_to_E#15"/>
+<flow id="car_flow_turn_E#6" type="car" begin="0" end="900" probability="0.15" route="south_to_E#1"/>
+</routes>
