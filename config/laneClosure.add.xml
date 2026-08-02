@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-01-11T12:59:40.304054-05:00 by Eclipse SUMO netedit 1.25.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <laneAreaDetector id="e_1" lane="E#4_0" pos="15.03" length="10.00" period="300.00" file="e2_0.xml"/>
+    <laneAreaDetector id="e_10" lane="E#13_1" pos="48.00" length="10.00" period="300.00" file="e2_8.xml"/>
+    <laneAreaDetector id="e_11" lane="E#13_0" pos="48.27" length="10.00" period="300.00" file="e2_5.xml"/>
+    <laneAreaDetector id="e_2" lane="E#10_1" pos="343.95" length="10.00" period="300.00" file="e2_2.xml"/>
+    <laneAreaDetector id="e_3" lane="E#10_0" pos="344.22" length="10.00" period="300.00" file="e2_4.xml"/>
+    <laneAreaDetector id="e_4" lane="E#9_1" pos="347.98" length="10.00" period="300.00" file="e2_10.xml"/>
+    <laneAreaDetector id="e_5" lane="E#9_0" pos="348.32" length="10.00" period="300.00" file="e2_7.xml"/>
+    <laneAreaDetector id="e_6" lane="E#12_1" pos="119.17" length="10.00" period="300.00" file="e2_3.xml"/>
+    <laneAreaDetector id="e_7" lane="E#12_0" pos="118.98" length="10.00" period="300.00" file="e2_6.xml"/>
+    <laneAreaDetector id="e_8" lane="E#17_1" pos="134.83" length="10.00" period="300.00" file="e2_12.xml"/>
+    <laneAreaDetector id="e_9" lane="E#17_0" pos="134.69" length="10.00" period="300.00" file="e2_9.xml"/>
+    <!-- Other additionals -->
+    <rerouter id="workzone_E9" pos="1319.77,887.87" edges="E#9"/>
+    <rerouter id="workzone_R2" pos="1326.33,872.52" edges="R2"/>
+</additional>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-03-09T20:22:22.844442-05:00 by Eclipse SUMO GUI 1.25.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="C:\Users\Asus ROG\Desktop\sumo-IA\sumo_rl\nets\construction\sumo-xml\net.net.xml"/>
+        <route-files value="C:\Users\Asus ROG\Desktop\sumo-IA\sumo_rl\nets\construction\sumo-xml\rou.route.xml"/>
+    </input>
+
+    <time>
+        <step-length value="0.2"/>
+    </time>
+
+    <processing>
+        <lateral-resolution value="0.8"/>
+        <collision.action value="remove"/>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="-1"/>
+    </processing>
+
+    <report>
+        <no-step-log value="true"/>
+    </report>
+
+    <ssm_device>
+        <device.ssm.probability value="1.0"/>
+        <device.ssm.measures value="TTC"/>
+    </ssm_device>
+
+    <traci_server>
+        <remote-port value="54227"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="11"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<SSMLog>
+    <conflict begin="102.60" end="245.80" ego="car_flow_turn_E#10.16" foe="car_flow_turn_E#10.17">
+        <minTTC time="116.20" position="1349.01,906.67" type="3" value="2.02" speed="0.00"/>
+    </conflict>
+    <conflict begin="109.60" end="168.40" ego="car_flow_turn_E#10.16" foe="car_flow_south_E#18.3">
+        <minTTC time="110.80" position="1338.68,904.00" type="13" value="2.68" speed="13.69"/>
+    </conflict>
+    <conflict begin="208.20" end="245.80" ego="car_flow_turn_E#10.16" foe="car_flow_turn_E#10.15">
+        <minTTC time="238.20" position="976.41,807.11" type="3" value="2.03" speed="0.03"/>
+    </conflict>
+</SSMLog>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-02-27T09:16:55.370325-05:00 by Eclipse SUMO sumo 1.25.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="net.net.xml"/>
+        <route-files value="rou.route.xml"/>
+    </input>
+
+    <time>
+        <step-length value="0.2"/>
+    </time>
+
+    <processing>
+        <lateral-resolution value="0.8"/>
+        <collision.action value="remove"/>
+        <time-to-teleport value="-1"/>
+        <waiting-time-memory value="1000"/>
+        <max-depart-delay value="-1"/>
+    </processing>
+
+    <report>
+        <no-step-log value="true"/>
+    </report>
+
+    <ssm_device>
+        <device.ssm.probability value="1.0"/>
+        <device.ssm.measures value="TTC"/>
+    </ssm_device>
+
+    <traci_server>
+        <remote-port value="51251"/>
+    </traci_server>
+
+    <random_number>
+        <random value="true"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<snapshot type="micro" version="1.25.0" time="24.00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/state_file.xsd">
+    <route id="NORTH_to_E#11" state="1" edges="E#13 E#19 E#11"/>
+    <route id="South_E#1" state="1" edges="E#7 E#8 E#1"/>
+    <route id="South_RIGHT_E#8" state="1" edges="E#7 R2 E#11"/>
+    <route id="South_to_E#15" state="1" edges="E#12 E#14 E#15"/>
+    <route id="WEST_to_E#1" state="1" edges="E#17 E#10 E#1"/>
+    <route id="WEST_to_E#11" state="1" edges="E#17 E#19 E#11"/>
+    <route id="WEST_to_E#15" state="1" edges="E#16 E#15"/>
+    <route id="east_through" state="1" edges="E#2 E#3 E#4 E#9 E#18"/>
+    <route id="east_to_E#6" state="1" edges="E#2 E#3 R1 E#6"/>
+    <route id="ghostRoute" state="1" edges="E#9"/>
+    <route id="north_to_E#1" state="1" edges="E#13 E#10 E#1"/>
+    <route id="north_to_E#18" state="1" edges="E#13 E#18"/>
+    <route id="south_through_E#15" state="1" edges="E#12 E#14 E#15"/>
+    <route id="south_to_E#1" state="1" edges="E#12 E#10 E#1"/>
+    <route id="south_to_E#18" state="1" edges="E#12 E#18"/>
+    <delay number="40" begin="49" end="0" depart="88.80" time="0.00"/>
+    <vType id="DEFAULT_VEHTYPE"/>
+    <vType id="car" length="4.00" maxSpeed="55.55" accel="3.0" decel="3.0"/>
+    <vType id="ghost" length="60.00" minGap="0.50" maxSpeed="0.01" width="2.60" color="black"/>
+    <vehicle id="ghost" type="ghost" depart="0.00" departLane="1" departPos="320.00" route="ghostRoute" distance="0 0" speedFactor="0.7924" state="14 0 0 320.00 0 0.00 23800 1 0" pos="320.00 260.00 0.00" speed="0.00 0.00" angle="74.67" posLat="0.00" waitingTime="1000000 0">
+        <stop lane="E#9_1" startPos="319.90" endPos="320.00" duration="999975.40" started="0.20"/>
+    </vehicle>
+    <vehicle id="car_flow_south_E#18.0" type="car" depart="0.20" route="north_to_E#18" distance="63.54 0" speedFactor="0.7924" state="2594 200 0 4.10 5400 17.16 23800 0 0" pos="8.47 4.47 0.00" speed="0.00 0.00" angle="155.15" posLat="-0.00" waitingTime="1000000 2 0 5400 9000 14200"/>
+    <vehicle id="car_flow_through.0" type="car" depart="1.20" route="south_through_E#15" distance="179.02 0" speedFactor="1.0536" state="2594 1200 2 4.10 0 6.72 23800 0 0" pos="8.35 4.35 1.13" speed="5.64 5.67" angle="344.53" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#15.0" type="car" depart="1.40" route="South_to_E#15" distance="167.67 0" speedFactor="0.9599" state="2594 3600 1 4.10 0 5.60 23800 0 0" pos="4.68 0.68 1.02" speed="5.08 5.18" angle="345.51" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#6.0" type="car" depart="1.40" route="south_to_E#1" distance="155.24 0" speedFactor="0.9194" state="2594 6000 1 4.10 0 5.01 23800 0 0" pos="2.78 12.65 1.82" speed="9.12 8.76" angle="258.18" posLat="-0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_South_Right.0" type="car" depart="1.80" route="South_RIGHT_E#8" distance="195.02 0" speedFactor="1.0167" state="2594 1800 1 4.10 0 7.27 23800 0 0" pos="107.50 103.50 2.81" speed="14.04 14.02" angle="74.71" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_WEST_E#6.0" type="car" depart="1.80" route="WEST_to_E#15" distance="169.56 0" speedFactor="1.1301" state="2594 1800 1 4.10 0 5.58 23800 0 0" pos="34.59 30.59 1.22" speed="6.09 6.24" angle="344.53" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#15.1" type="car" depart="2.00" route="South_to_E#15" distance="133.09 0" speedFactor="1.0103" state="2594 8200 0 4.10 0 4.05 23800 0 0" pos="22.58 18.58 1.39" speed="6.93 7.11" angle="341.04" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_WEST_E#6.1" type="car" depart="3.00" route="WEST_to_E#15" distance="0 0" speedFactor="1.0389" state="2594 4200 0 4.10 3000 8.93 23800 0 0" pos="158.10 154.10 0.00" speed="0.00 0.00" angle="310.15" posLat="0.00" waitingTime="1000000 1 0 3000"/>
+    <vehicle id="car_flow_turn_E#10.0" type="car" depart="3.80" route="WEST_to_E#1" distance="0 0" speedFactor="1.0271" state="2594 3800 0 4.10 5200 13.76 23800 0 0" pos="147.39 143.39 0.00" speed="0.00 0.00" angle="253.97" posLat="-0.00" waitingTime="1000000 1 0 5200"/>
+    <vehicle id="car_flow_turn_E#6.1" type="car" depart="3.80" route="south_to_E#1" distance="133.09 0" speedFactor="0.9887" state="2594 10400 0 4.10 0 3.91 23800 0 0" pos="0.81 129.90 1.39" speed="6.95 7.55" angle="344.46" posLat="-0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_south_E#15.0" type="car" depart="4.00" route="north_to_E#1" distance="77.87 0" speedFactor="0.8952" state="2594 4000 1 4.10 0 8.17 23800 0 0" pos="60.77 56.77 2.44" speed="12.18 12.27" angle="254.65" posLat="-0.00" waitingTime="1000000 1 9000 10400"/>
+    <vehicle id="car_flow_turn_E#6.2" type="car" depart="4.40" route="south_to_E#1" distance="0 0" speedFactor="1.1067" state="2594 12600 0 4.10 0 4.16 23800 0 0" pos="112.30 108.30 1.91" speed="9.54 10.14" angle="347.42" posLat="-0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn.0" type="car" depart="4.80" route="south_to_E#18" distance="0 0" speedFactor="0.9665" state="2594 15000 0 4.10 0 2.68 23800 0 0" pos="86.25 82.25 2.68" speed="13.38 13.15" angle="347.42" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_north_E#18.0" type="car" depart="5.20" route="NORTH_to_E#11" distance="102.5 0" speedFactor="1.1251" state="2594 6200 1 4.10 0 9.19 23800 0 0" pos="5.34 1.34 1.51" speed="7.57 7.18" angle="166.96" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#13.0" type="car" depart="5.20" route="WEST_to_E#15" distance="0 0" speedFactor="1.1825" state="2594 6600 0 4.10 0 8.26 23800 0 0" pos="150.94 146.94 0.14" speed="0.70 0.90" angle="291.57" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#6.3" type="car" depart="5.20" route="south_to_E#1" distance="0 0" speedFactor="1.0663" state="2594 17200 0 4.10 0 3.11 23800 0 0" pos="55.72 51.72 2.92" speed="14.61 14.09" angle="353.47" posLat="-0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_South_Right.1" type="car" depart="6.00" route="South_RIGHT_E#8" distance="195.02 0" speedFactor="1.1558" state="2594 6000 1 4.10 0 7.66 23800 0 0" pos="61.28 57.28 3.20" speed="16.01 15.95" angle="74.71" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_E#10.0" type="car" depart="7.00" route="east_through" distance="269.06 0" speedFactor="1.0213" state="2594 7000 1 4.10 0 5.01 23800 0 0" pos="4.06 0.06 4.53" speed="22.67 22.73" angle="74.72" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#10.1" type="car" depart="8.80" route="WEST_to_E#1" distance="0 0" speedFactor="0.8996" state="2594 8800 0 4.10 0 7.89 23800 0 0" pos="147.06 143.06 0.35" speed="1.73 2.33" angle="253.83" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#6.4" type="car" depart="8.80" route="south_to_E#1" distance="0 0" speedFactor="1.0813" state="2594 19400 0 4.10 0 2.87 23800 0 0" pos="27.07 23.07 2.02" speed="10.09 9.51" angle="347.44" posLat="-0.80" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#13.1" type="car" depart="10.40" route="WEST_to_E#15" distance="0 0" speedFactor="0.8127" state="2594 10400 0 4.10 0 2.59 23800 0 0" pos="126.14 122.14 1.67" speed="8.36 8.72" angle="253.99" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#13.2" type="car" depart="11.60" route="WEST_to_E#15" distance="0 0" speedFactor="0.9125" state="2594 12800 0 4.10 0 2.96 23800 0 0" pos="106.01 102.01 1.95" speed="9.76 10.36" angle="253.99" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_South_Right.2" type="car" depart="15.00" route="South_RIGHT_E#8" distance="0 0" speedFactor="0.9085" state="2594 15000 0 4.10 0 5.12 23800 0 0" pos="96.93 92.93 4.06" speed="20.28 19.83" angle="359.40" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_E#10.1" type="car" depart="16.00" route="east_through" distance="0 0" speedFactor="0.9391" state="2594 16000 0 4.10 0 4.21 23800 0 0" pos="79.52 75.52 3.61" speed="18.03 17.69" angle="74.70" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_south_left.0" type="car" depart="16.80" route="east_to_E#6" distance="0 0" speedFactor="0.9692" state="2594 18200 0 4.10 0 3.88 23800 0 0" pos="41.26 37.26 2.56" speed="12.81 12.32" angle="74.71" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#13.3" type="car" depart="17.00" route="WEST_to_E#15" distance="0 0" speedFactor="1.0564" state="2594 17000 0 4.10 0 3.02 23800 0 0" pos="59.62 55.62 2.92" speed="14.61 14.58" angle="253.99" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_E#10.2" type="car" depart="17.40" route="east_through" distance="0 0" speedFactor="1.0392" state="2594 20600 0 4.10 0 2.58 23800 0 0" pos="18.47 14.47 1.61" speed="8.07 7.69" angle="74.71" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_north_E#18.1" type="car" depart="17.60" route="NORTH_to_E#11" distance="0 0" speedFactor="0.8192" state="2594 17600 0 4.10 0 2.30 23800 0 0" pos="48.53 44.53 1.88" speed="9.40 10.00" angle="164.72" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_South_Right.3" type="car" depart="17.80" route="South_RIGHT_E#8" distance="0 0" speedFactor="0.9485" state="2594 17800 0 4.10 0 4.38 23800 0 0" pos="46.88 42.88 2.75" speed="13.74 13.22" angle="0.38" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_WEST_E#6.2" type="car" depart="17.80" route="WEST_to_E#15" distance="0 0" speedFactor="0.9771" state="2594 19200 0 4.10 0 2.70 23800 0 0" pos="29.91 25.91 2.10" speed="10.50 10.07" angle="253.99" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_north_E#1.0" type="car" depart="17.80" route="South_E#1" distance="0 0" speedFactor="1.0095" state="2594 20200 0 4.10 0 3.04 23800 0 0" pos="19.93 15.93 1.60" speed="8.02 7.70" angle="0.33" posLat="0.04" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#6.5" type="car" depart="18.00" route="south_to_E#1" distance="0 0" speedFactor="1.1869" state="2594 21800 0 4.10 0 1.66 23800 0 0" pos="9.66 5.66 0.95" speed="4.76 4.21" angle="351.89" posLat="0.12" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#10.2" type="car" depart="18.20" route="WEST_to_E#1" distance="0 0" speedFactor="0.9428" state="2594 18200 0 4.10 0 3.80 23800 0 0" pos="42.00 38.00 2.48" speed="12.42 11.93" angle="253.97" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_south_E#15.1" type="car" depart="18.40" route="north_to_E#1" distance="0 0" speedFactor="1.2004" state="2594 19800 0 4.10 0 2.85 23800 0 0" pos="23.27 19.27 1.80" speed="8.98 8.55" angle="164.72" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_E#10.3" type="car" depart="19.00" route="east_through" distance="0 0" speedFactor="1.0074" state="2594 22800 0 4.10 0 0.93 23800 0 0" pos="5.70 1.70 0.53" speed="2.65 2.09" angle="74.71" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#6.6" type="car" depart="19.40" route="south_to_E#1" distance="0 0" speedFactor="0.9457" state="2594 9223372036854774807 0 -1.00 0 0.00 0 0 0" pos="4.10 0.10 0.00" speed="0.00 0.00" angle="90.00" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_WEST_E#6.3" type="car" depart="19.60" route="WEST_to_E#15" distance="0 0" speedFactor="1.0072" state="2594 21600 0 4.10 0 1.73 23800 0 0" pos="10.70 6.70 1.08" speed="5.38 4.83" angle="253.99" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_north_E#18.2" type="car" depart="20.60" route="NORTH_to_E#11" distance="0 0" speedFactor="0.9883" state="2594 22200 0 4.10 0 1.34 23800 0 0" pos="7.73 3.73 0.75" speed="3.74 3.43" angle="164.72" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_South_Right.4" type="car" depart="21.00" route="South_RIGHT_E#8" distance="0 0" speedFactor="1.0391" state="2594 22600 0 4.10 0 1.13 23800 0 0" pos="6.23 2.23 0.56" speed="2.81 2.50" angle="0.90" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_south_left.1" type="car" depart="21.60" route="east_to_E#6" distance="0 0" speedFactor="0.9583" state="2594 9223372036854774807 0 -1.00 0 0.00 0 0 0" pos="4.10 0.10 0.00" speed="0.00 0.00" angle="90.00" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_north_E#1.1" type="car" depart="22.00" route="South_E#1" distance="0 0" speedFactor="0.9319" state="2594 9223372036854774807 0 -1.00 0 0.00 0 0 0" pos="4.10 0.10 0.00" speed="0.00 0.00" angle="90.00" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#6.7" type="car" depart="22.00" route="south_to_E#1" distance="0 0" speedFactor="1.0093" state="2594 9223372036854774807 0 -1.00 0 0.00 0 0 0" pos="0.00 0.00 0.00" speed="0.00 0.00" angle="90.00" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#13.4" type="car" depart="23.00" route="WEST_to_E#15" distance="0 0" speedFactor="0.9415" state="2594 23800 0 4.10 0 0.00 24000 0 0" pos="4.10 0.10 0.00" speed="0.00 0.00" angle="253.99" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_north_E#18.3" type="car" depart="23.40" route="NORTH_to_E#11" distance="0 0" speedFactor="0.9152" state="2594 9223372036854774807 0 -1.00 0 0.00 0 0 0" pos="4.10 0.10 0.00" speed="0.00 0.00" angle="90.00" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_turn_E#15.2" type="car" depart="23.40" route="South_to_E#15" distance="0 0" speedFactor="0.8811" state="2594 9223372036854774807 0 -1.00 0 0.00 0 0 0" pos="0.00 0.00 0.00" speed="0.00 0.00" angle="90.00" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_south_E#15.2" type="car" depart="23.60" route="north_to_E#1" distance="0 0" speedFactor="1.1165" state="2594 9223372036854774807 0 -1.00 0 0.00 0 0 0" pos="0.00 0.00 0.00" speed="0.00 0.00" angle="90.00" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_south_E#18.1" type="car" depart="23.60" route="north_to_E#18" distance="0 0" speedFactor="1.0234" state="2594 9223372036854774807 0 -1.00 0 0.00 0 0 0" pos="0.00 0.00 0.00" speed="0.00 0.00" angle="90.00" posLat="0.00" waitingTime="1000000 0"/>
+    <vehicle id="car_flow_north_E#18.4" type="car" depart="23.80" route="NORTH_to_E#11" distance="0 0" speedFactor="0.8946" state="2594 9223372036854774807 0 -1.00 0 0.00 0 0 0" pos="0.00 0.00 0.00" speed="0.00 0.00" angle="90.00" posLat="0.00" waitingTime="1000000 0"/>
+    <flowState id="car_flow_E#10" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="east_through" done="4" index="4"/>
+    <flowState id="car_flow_South_Right" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="South_RIGHT_E#8" done="5" index="5"/>
+    <flowState id="car_flow_WEST_E#6" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="WEST_to_E#15" done="4" index="4"/>
+    <flowState id="car_flow_north_E#1" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="South_E#1" done="2" index="2"/>
+    <flowState id="car_flow_north_E#18" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="NORTH_to_E#11" done="5" index="5"/>
+    <flowState id="car_flow_south_E#15" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="north_to_E#1" done="3" index="3"/>
+    <flowState id="car_flow_south_E#18" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="north_to_E#18" done="2" index="2"/>
+    <flowState id="car_flow_south_left" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="east_to_E#6" done="2" index="2"/>
+    <flowState id="car_flow_through" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="south_through_E#15" done="1" index="1"/>
+    <flowState id="car_flow_turn" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="south_to_E#18" done="1" index="1"/>
+    <flowState id="car_flow_turn_E#10" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="WEST_to_E#1" done="3" index="3"/>
+    <flowState id="car_flow_turn_E#13" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="WEST_to_E#15" done="5" index="5"/>
+    <flowState id="car_flow_turn_E#15" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="South_to_E#15" done="3" index="3"/>
+    <flowState id="car_flow_turn_E#6" type="car" begin="0.00" end="900.00" probability="0.14999999999999999445" route="south_to_E#1" done="8" index="8"/>
+    <lane id=":INT2_4_0">
+        <vehicles value="car_flow_turn_E#15.1"/>
+    </lane>
+    <lane id=":INT2_5_0">
+        <vehicles value="car_flow_turn_E#6.1"/>
+    </lane>
+    <lane id=":INT2_11_0">
+        <vehicles value="car_flow_south_E#18.0"/>
+    </lane>
+    <lane id=":MJ5_1_0">
+        <vehicles value="car_flow_north_E#18.0"/>
+    </lane>
+    <lane id=":MJ6_1_0">
+        <vehicles value="car_flow_turn_E#15.0"/>
+    </lane>
+    <lane id="E#10_1">
+        <vehicles value="car_flow_turn_E#6.0 car_flow_south_E#15.0"/>
+    </lane>
+    <lane id="E#12_0">
+        <vehicles value="car_flow_turn_E#6.5 car_flow_turn.0"/>
+    </lane>
+    <lane id="E#12_1">
+        <vehicles value="car_flow_turn_E#6.4 car_flow_turn_E#6.3 car_flow_turn_E#6.2"/>
+    </lane>
+    <lane id="E#13_0">
+        <vehicles value="car_flow_north_E#18.2 car_flow_south_E#15.1 car_flow_north_E#18.1"/>
+    </lane>
+    <lane id="E#15_0">
+        <vehicles value="car_flow_through.0 car_flow_WEST_E#6.0"/>
+    </lane>
+    <lane id="E#16_0">
+        <vehicles value="car_flow_turn_E#13.4 car_flow_WEST_E#6.3 car_flow_WEST_E#6.2 car_flow_turn_E#13.3 car_flow_turn_E#13.2 car_flow_turn_E#13.1 car_flow_turn_E#13.0 car_flow_WEST_E#6.1"/>
+    </lane>
+    <lane id="E#17_0">
+        <vehicles value="car_flow_turn_E#10.2 car_flow_turn_E#10.0"/>
+    </lane>
+    <lane id="E#17_1">
+        <vehicles value="car_flow_turn_E#10.1"/>
+    </lane>
+    <lane id="E#2_0">
+        <vehicles value="car_flow_E#10.3 car_flow_E#10.2 car_flow_south_left.0 car_flow_E#10.1"/>
+    </lane>
+    <lane id="E#3_1">
+        <vehicles value="car_flow_E#10.0"/>
+    </lane>
+    <lane id="E#7_0">
+        <vehicles value="car_flow_South_Right.4 car_flow_north_E#1.0 car_flow_South_Right.3 car_flow_South_Right.2"/>
+    </lane>
+    <lane id="E#9_1">
+        <vehicles value="ghost"/>
+    </lane>
+    <lane id="R2_0">
+        <vehicles value="car_flow_South_Right.1 car_flow_South_Right.0"/>
+    </lane>
+    <tlLogic id="TL1" programID="0" phase="3" duration="1000"/>
+    <tlLogic id="TL2" programID="0" phase="0" duration="24000"/>
+</snapshot>

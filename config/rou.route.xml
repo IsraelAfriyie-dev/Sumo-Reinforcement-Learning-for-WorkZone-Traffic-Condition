@@ -1,0 +1,102 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+<!--  VTypes  -->
+<vType id="car" length="4.00" maxSpeed="55.55" accel="3.0" decel="3.0" vClass="passenger"/>
+<vType id="truck" length="12.00" maxSpeed="48.00" accel="1.5" decel="3.0" vClass="truck"/>
+<vType id="bus" length="12.00" maxSpeed="45.00" accel="1.3" decel="3.0" vClass="bus"/>
+<vTypeDistribution id="mixedFleet">
+    <vType id="mixed_car" vClass="passenger" length="4.00" maxSpeed="55.55" accel="3.0" decel="3.0" probability="0.85"/>
+    <vType id="mixed_truck" vClass="truck" length="12.00" maxSpeed="48.00" accel="1.5" decel="3.0" probability="0.12"/>
+    <vType id="mixed_bus" vClass="bus" length="12.00" maxSpeed="45.00" accel="1.3" decel="3.0" probability="0.03"/>
+</vTypeDistribution>
+
+<!--  Routes  -->
+<route id="NORTH_to_E#11" edges="E#13 E#19 E#11"/>
+<route id="South_E#1" edges="E#7 E#8 E#1"/>
+<route id="South_RIGHT_E#8" edges="E#7 R2 E#11"/>
+<route id="South_to_E#15" edges="E#12 E#14 E#15"/>
+<route id="WEST_to_E#1" edges="E#17 E#10 E#1"/>
+<route id="WEST_to_E#11" edges="E#17 E#19 E#11"/>
+<route id="WEST_to_E#15" edges="E#16 E#15"/>
+<route id="east_through" edges="E#2 E#3 E#4 E#9 E#18"/>
+<route id="east_to_E#6" edges="E#2 E#3 R1 E#6"/>
+<route id="north_to_E#1" edges="E#13 E#10 E#1"/>
+<route id="north_to_E#18" edges="E#13 E#18"/>
+<route id="south_through_E#15" edges="E#12 E#14 E#15"/>
+<route id="south_to_E#1" edges="E#12 E#10 E#1"/>
+<route id="south_to_E#18" edges="E#12 E#18"/>
+
+<!-- Demand sized to the "Default Signal Timing" column (totals over begin=0/end=9000):
+     cars=3124, trucks=1876, buses=1487, mixed=3478. Each class's total is split
+     across the 14 routes below using SUMO's fixed "number" attribute (not
+     probability), so the generated vehicle count matches the target exactly;
+     the table's +/- values are seed-to-seed spread and aren't encoded here.
+     end=9000 (2.5h) instead of the original 900s: at 900s, the single-lane
+     bottleneck edges (E#11, E#15) would need ~5,700-11,400 veh/h to clear this
+     demand, several times realistic signalized single-lane capacity. Spreading
+     the same totals over 9000s brings the worst edge (E#15) down to ~1,140
+     veh/h, within plausible single-lane capacity. -->
+
+<!--  Cars: 3124 total  -->
+<flow id="car_flow_E#10" type="car" begin="0" end="9000" number="224" route="east_through"/>
+<flow id="car_flow_South_Right" type="car" begin="0" end="9000" number="224" route="South_RIGHT_E#8"/>
+<flow id="car_flow_WEST_E#6" type="car" begin="0" end="9000" number="223" route="WEST_to_E#15"/>
+<flow id="car_flow_north_E#1" type="car" begin="0" end="9000" number="223" route="South_E#1"/>
+<flow id="car_flow_north_E#18" type="car" begin="0" end="9000" number="223" route="NORTH_to_E#11"/>
+<flow id="car_flow_south_E#15" type="car" begin="0" end="9000" number="223" route="north_to_E#1"/>
+<flow id="car_flow_south_E#18" type="car" begin="0" end="9000" number="223" route="north_to_E#18"/>
+<flow id="car_flow_south_left" type="car" begin="0" end="9000" number="223" route="east_to_E#6"/>
+<flow id="car_flow_through" type="car" begin="0" end="9000" number="223" route="south_through_E#15"/>
+<flow id="car_flow_turn" type="car" begin="0" end="9000" number="223" route="south_to_E#18"/>
+<flow id="car_flow_turn_E#10" type="car" begin="0" end="9000" number="223" route="WEST_to_E#1"/>
+<flow id="car_flow_turn_E#13" type="car" begin="0" end="9000" number="223" route="WEST_to_E#15"/>
+<flow id="car_flow_turn_E#15" type="car" begin="0" end="9000" number="223" route="South_to_E#15"/>
+<flow id="car_flow_turn_E#6" type="car" begin="0" end="9000" number="223" route="south_to_E#1"/>
+
+<!--  Trucks: 1876 total  -->
+<flow id="truck_flow_E#10" type="truck" begin="0" end="9000" number="134" route="east_through"/>
+<flow id="truck_flow_South_Right" type="truck" begin="0" end="9000" number="134" route="South_RIGHT_E#8"/>
+<flow id="truck_flow_WEST_E#6" type="truck" begin="0" end="9000" number="134" route="WEST_to_E#15"/>
+<flow id="truck_flow_north_E#1" type="truck" begin="0" end="9000" number="134" route="South_E#1"/>
+<flow id="truck_flow_north_E#18" type="truck" begin="0" end="9000" number="134" route="NORTH_to_E#11"/>
+<flow id="truck_flow_south_E#15" type="truck" begin="0" end="9000" number="134" route="north_to_E#1"/>
+<flow id="truck_flow_south_E#18" type="truck" begin="0" end="9000" number="134" route="north_to_E#18"/>
+<flow id="truck_flow_south_left" type="truck" begin="0" end="9000" number="134" route="east_to_E#6"/>
+<flow id="truck_flow_through" type="truck" begin="0" end="9000" number="134" route="south_through_E#15"/>
+<flow id="truck_flow_turn" type="truck" begin="0" end="9000" number="134" route="south_to_E#18"/>
+<flow id="truck_flow_turn_E#10" type="truck" begin="0" end="9000" number="134" route="WEST_to_E#1"/>
+<flow id="truck_flow_turn_E#13" type="truck" begin="0" end="9000" number="134" route="WEST_to_E#15"/>
+<flow id="truck_flow_turn_E#15" type="truck" begin="0" end="9000" number="134" route="South_to_E#15"/>
+<flow id="truck_flow_turn_E#6" type="truck" begin="0" end="9000" number="134" route="south_to_E#1"/>
+
+<!--  Buses: 1487 total  -->
+<flow id="bus_flow_E#10" type="bus" begin="0" end="9000" number="107" route="east_through"/>
+<flow id="bus_flow_South_Right" type="bus" begin="0" end="9000" number="107" route="South_RIGHT_E#8"/>
+<flow id="bus_flow_WEST_E#6" type="bus" begin="0" end="9000" number="107" route="WEST_to_E#15"/>
+<flow id="bus_flow_north_E#1" type="bus" begin="0" end="9000" number="106" route="South_E#1"/>
+<flow id="bus_flow_north_E#18" type="bus" begin="0" end="9000" number="106" route="NORTH_to_E#11"/>
+<flow id="bus_flow_south_E#15" type="bus" begin="0" end="9000" number="106" route="north_to_E#1"/>
+<flow id="bus_flow_south_E#18" type="bus" begin="0" end="9000" number="106" route="north_to_E#18"/>
+<flow id="bus_flow_south_left" type="bus" begin="0" end="9000" number="106" route="east_to_E#6"/>
+<flow id="bus_flow_through" type="bus" begin="0" end="9000" number="106" route="south_through_E#15"/>
+<flow id="bus_flow_turn" type="bus" begin="0" end="9000" number="106" route="south_to_E#18"/>
+<flow id="bus_flow_turn_E#10" type="bus" begin="0" end="9000" number="106" route="WEST_to_E#1"/>
+<flow id="bus_flow_turn_E#13" type="bus" begin="0" end="9000" number="106" route="WEST_to_E#15"/>
+<flow id="bus_flow_turn_E#15" type="bus" begin="0" end="9000" number="106" route="South_to_E#15"/>
+<flow id="bus_flow_turn_E#6" type="bus" begin="0" end="9000" number="106" route="south_to_E#1"/>
+
+<!--  Mixed traffic (mixedFleet distribution): 3478 total  -->
+<flow id="mixed_flow_E#10" type="mixedFleet" begin="0" end="9000" number="249" route="east_through"/>
+<flow id="mixed_flow_South_Right" type="mixedFleet" begin="0" end="9000" number="249" route="South_RIGHT_E#8"/>
+<flow id="mixed_flow_WEST_E#6" type="mixedFleet" begin="0" end="9000" number="249" route="WEST_to_E#15"/>
+<flow id="mixed_flow_north_E#1" type="mixedFleet" begin="0" end="9000" number="249" route="South_E#1"/>
+<flow id="mixed_flow_north_E#18" type="mixedFleet" begin="0" end="9000" number="249" route="NORTH_to_E#11"/>
+<flow id="mixed_flow_south_E#15" type="mixedFleet" begin="0" end="9000" number="249" route="north_to_E#1"/>
+<flow id="mixed_flow_south_E#18" type="mixedFleet" begin="0" end="9000" number="248" route="north_to_E#18"/>
+<flow id="mixed_flow_south_left" type="mixedFleet" begin="0" end="9000" number="248" route="east_to_E#6"/>
+<flow id="mixed_flow_through" type="mixedFleet" begin="0" end="9000" number="248" route="south_through_E#15"/>
+<flow id="mixed_flow_turn" type="mixedFleet" begin="0" end="9000" number="248" route="south_to_E#18"/>
+<flow id="mixed_flow_turn_E#10" type="mixedFleet" begin="0" end="9000" number="248" route="WEST_to_E#1"/>
+<flow id="mixed_flow_turn_E#13" type="mixedFleet" begin="0" end="9000" number="248" route="WEST_to_E#15"/>
+<flow id="mixed_flow_turn_E#15" type="mixedFleet" begin="0" end="9000" number="248" route="South_to_E#15"/>
+<flow id="mixed_flow_turn_E#6" type="mixedFleet" begin="0" end="9000" number="248" route="south_to_E#1"/>
+</routes>

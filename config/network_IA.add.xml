@@ -1,0 +1,22 @@
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+
+    <laneAreaDetector id="e_0"  lane="E#4_1"  pos="15.28"  length="10.00" period="1200" file="NUL"/>
+    <laneAreaDetector id="e_1"  lane="E#4_0"  pos="15.03"  length="10.00" period="1200" file="NUL"/>
+
+    <laneAreaDetector id="e_2"  lane="E#10_1" pos="343.95" length="10.00" period="1200" file="NUL"/>
+    <laneAreaDetector id="e_3"  lane="E#10_0" pos="344.22" length="10.00" period="1200" file="NUL"/>
+
+    <laneAreaDetector id="e_4"  lane="E#9_1"  pos="347.98" length="10.00" period="1200" file="NUL"/>
+    <laneAreaDetector id="e_5"  lane="E#9_0"  pos="348.32" length="10.00" period="1200" file="NUL"/>
+
+    <laneAreaDetector id="e_6"  lane="E#12_1" pos="119.17" length="10.00" period="1200" file="NUL"/>
+    <laneAreaDetector id="e_7"  lane="E#12_0" pos="118.98" length="10.00" period="1200" file="NUL"/>
+
+    <laneAreaDetector id="e_8"  lane="E#17_1" pos="134.83" length="10.00" period="1200" file="NUL"/>
+    <laneAreaDetector id="e_9"  lane="E#17_0" pos="134.69" length="10.00" period="1200" file="NUL"/>
+
+    <laneAreaDetector id="e_10" lane="E#13_1" pos="48.00"  length="10.00" period="1200" file="NUL"/>
+    <laneAreaDetector id="e_11" lane="E#13_0" pos="48.27"  length="10.00" period="1200" file="NUL"/>
+
+</additional>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-01-11T12:59:40.303285-05:00 by Eclipse SUMO netedit 1.25.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <laneAreaDetector id="e_0" lane="E#4_1" pos="15.28" length="10.00" period="300.00" file="e2_1.xml"/>
+    <!-- Other additionals -->
+    <rerouter id="rz_E9" pos="1330.40,890.78" edges="E#9"/>
+    <rerouter id="rz_R2" pos="1326.33,872.52" edges="R2"/>
+    <!-- Shapes -->
+    <poly id="workzone_E9_visual" color="red" fill="1" layer="1.00" shape="974.110000,796.500000 991.020000,801.050000 1000.360000,803.390000 1324.770000,892.350000 1323.920000,895.430000 999.550000,806.480000 990.210000,804.150000 973.270000,799.590000"/>
+    <poly id="workzone_R2_visual" color="red" fill="1" layer="1.00" shape="981.340000,764.590000 982.590000,769.880000 983.980000,776.190000 985.750000,782.430000 988.330000,788.090000 992.610000,794.360000 998.380000,799.860000 1292.110000,879.420000"/>
+</additional>

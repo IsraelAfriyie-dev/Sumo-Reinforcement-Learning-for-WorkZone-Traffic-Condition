@@ -1,0 +1,5 @@
+episode,time_s,vehicle_id,position_m,speed_mps,lane,tail_pos_m,rear_pos_m,queue_length_m,ttc_conflicts
+1,23.20,car_flow_E#10.0,5.503,14.038,0,,260.000,0.000,0
+1,21.20,car_flow_E#10.0,16.546,16.521,0,,260.000,0.000,2
+1,22.20,car_flow_E#10.0,33.119,16.693,0,,260.000,0.000,2
+1,23.20,car_flow_E#10.0,49.639,16.496,0,,260.000,0.000,2
